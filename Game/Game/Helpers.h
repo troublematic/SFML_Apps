@@ -1,6 +1,6 @@
 #pragma once
 
-#if 1
+#if true    // If you get compile errors here, change 'true' to 'false' (without the quotes)
 #include <cstdarg>
 #include <stdio.h>
 #include <Windows.h>
