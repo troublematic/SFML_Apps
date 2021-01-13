@@ -15,15 +15,21 @@ int main()
         sf::Event event;
         while (window->pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             {
                 // The user has closed the application. Delete our window.
                 window->close();
             }
         }
 
+        // Clear the screen from last time
+        window->clear();
+
         // Run our game loop
         GameLoop();
+
+        // Show the finished image on the screen
+        window->display();
     }
 
     // Application has finished. Exit.

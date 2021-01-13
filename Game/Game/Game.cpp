@@ -1,12 +1,14 @@
-#include <SFML/Graphics.hpp>
 #include "Main.h"
 #include "Helpers.h"
+
+int SCREEN_WIDTH = 800;
+int SCREEN_HEIGHT = 600;
 
 void GameInit()
 {
     // Create a window for the game
     // The numbers are the width and height in pixels. The text is the title of the window.
-    window = new sf::RenderWindow(sf::VideoMode(200, 200), "SFML works!");
+    window = new sf::RenderWindow(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "SFML works!");
 
     // Write some text to the output window in Visual Studio
     printf("Hello world!");
@@ -15,18 +17,5 @@ void GameInit()
 void GameLoop()
 {
     // Create a circle shape
-    sf::CircleShape myCircle(100.f);
-    myCircle.setFillColor(sf::Color::Green);
-
-
-    // DRAW THE SCREEN
-
-    // Clear the screen from last time
-    window->clear();
-
-    // Draw our circle
-    window->draw(myCircle);
-
-    // Show the finished image on the screen
-    window->display();
+    DrawCircle(50, 25, 25, sf::Color::Green);
 }
