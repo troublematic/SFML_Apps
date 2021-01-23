@@ -1,4 +1,4 @@
 #pragma once
 
 void GameInit();
-void GameLoop();
+void GameLoop(float elapsedSeconds);

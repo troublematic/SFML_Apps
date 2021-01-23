@@ -1,3 +1,4 @@
+#include <SFML\System\Clock.hpp>
 #include "Main.h"
 #include "Game.h"
 
@@ -7,6 +8,9 @@ int main()
 {
     // Run our game initialization code
     GameInit();
+
+    // Create a 'clock' object, which is used like a stopwatch, to see how much time has passed each frame
+    sf::Clock clock;
 
     // While the application is running, repeatedly process events from windows, and running our game loop
     while (window->isOpen())
@@ -25,8 +29,14 @@ int main()
         // Clear the screen from last time
         window->clear();
 
+        // Get number of seconds since last loop (which will be a fraction of a second)
+        float elapsedSeconds = clock.getElapsedTime().asSeconds();
+
+        // Restart the clock from zero, so next time around the loop, we get the elapsed time
+        clock.restart();
+
         // Run our game loop
-        GameLoop();
+        GameLoop(elapsedSeconds);
 
         // Show the finished image on the screen
         window->display();

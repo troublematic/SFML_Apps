@@ -59,6 +59,26 @@ void DrawLine(float x1, float y1, float x2, float y2, sf::Color color)
     window->draw(points, 2, sf::Lines);
 }
 
+void DrawTriangle(float x1, float y1, float x2, float y2, float x3, float y3, sf::Color color)
+{
+    // Create an empty convex shape
+    sf::ConvexShape convex;
+
+    // Resize it to 3 points
+    convex.setPointCount(3);
+
+    // Define the points
+    convex.setPoint(0, sf::Vector2f(x1, y1));
+    convex.setPoint(1, sf::Vector2f(x2, y2));
+    convex.setPoint(2, sf::Vector2f(x3, y3));
+
+    // Set color
+    convex.setFillColor(color);
+
+    // Draw the line made by the two end points
+    window->draw(convex);
+}
+
 
 // This function gets called when you call printf
 // It prints text to the output window in Visual Studio
