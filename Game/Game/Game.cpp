@@ -62,4 +62,10 @@ void GameLoop(float elapsedSeconds)
 		// Otherwise, draw a yellow circle
 		DrawCircle(mouseX, mouseY, 10, sf::Color::Yellow);
 	}
+
+	// If the space bar is pressed, draw a rectangle
+	if (IsKeyPressed(sf::Keyboard::Space))
+	{
+		DrawRectangle(30, 460, 50, 10, sf::Color::Green);
+	}
 }

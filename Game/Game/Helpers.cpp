@@ -110,7 +110,12 @@ void DrawString(std::string myString, float x, float y, int height, sf::Color co
 
 
 /////////////////////////////////////////////////////////////////////////////
-// MOUSE INPUT
+// KEYBOARD AND MOUSE INPUT
+
+bool IsKeyPressed(sf::Keyboard::Key key)
+{
+    return sf::Keyboard::isKeyPressed(key);
+}
 
 bool IsMouseButtonPressed()
 {
