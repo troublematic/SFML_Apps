@@ -1,13 +1,22 @@
 #include <SFML\System\Clock.hpp>
 #include "Main.h"
 #include "Game.h"
+#include "Helpers.h"
 
-sf::RenderWindow* window = NULL;
+sf::RenderWindow* window = NULL;    // The window that the game will draw within
+sf::Font defaultFont;               // The font used for text within the window
 
 int main()
 {
     // Run our game initialization code
     GameInit();
+
+    // Load from a font file on disk
+    // Note, you can use "Bangers.ttf" instead, for a different looking font
+    if (!defaultFont.loadFromFile("arial.ttf"))
+    {
+        printf("Failed to load font\n");
+    }
 
     // Create a 'clock' object, which is used like a stopwatch, to see how much time has passed each frame
     sf::Clock clock;

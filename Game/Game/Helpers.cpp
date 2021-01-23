@@ -79,6 +79,32 @@ void DrawTriangle(float x1, float y1, float x2, float y2, float x3, float y3, sf
     window->draw(convex);
 }
 
+void DrawString(std::string myString, float x, float y, int height, sf::Color color)
+{
+    sf::Text text;
+
+    // Set the text position
+    text.setPosition(x, y);
+
+    // Select the font
+    text.setFont(defaultFont); // font is a sf::Font
+
+    // Set the string to display
+    text.setString(myString);
+
+    // Set the character size (in pixels)
+    text.setCharacterSize(height);
+
+    // Set the color
+    text.setFillColor(color);
+
+    // Set the text style
+    text.setStyle(sf::Text::Bold);
+
+    // Draw the text
+    window->draw(text);
+}
+
 
 // This function gets called when you call printf
 // It prints text to the output window in Visual Studio

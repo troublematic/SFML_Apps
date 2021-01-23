@@ -16,7 +16,7 @@ void GameInit()
 	window = new sf::RenderWindow(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "SFML works!");
 
 	// Write some text to the output window in Visual Studio
-	printf("Hello world!");
+	printf("Hello world!\n");
 }
 
 float totalTime = 0.0f;		// Total number of seconds since the program started
@@ -43,4 +43,8 @@ void GameLoop(float elapsedSeconds)
 	float triangleX = 160.0f;
 	float triangleY = 80.0f;
 	DrawTriangle(triangleX, triangleY, triangleX, triangleY + 60, triangleX + 120, triangleY + 60, sf::Color::Yellow);
+
+	// Draw text
+	std::string text = "Oh my word!";
+	DrawString(text, 300, 50, 32, sf::Color::Green);
 }
