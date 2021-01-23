@@ -108,6 +108,21 @@ void DrawString(std::string myString, float x, float y, int height, sf::Color co
     window->draw(text);
 }
 
+void DrawTexture(float x, float y, sf::Texture texture)
+{
+    // Create a sprite object
+    sf::Sprite sprite;
+
+    // Set the position
+    sprite.setPosition(x, y);
+
+    // Set the texture
+    sprite.setTexture(texture);
+
+    // Draw the sprite
+    window->draw(sprite);
+}
+
 
 /////////////////////////////////////////////////////////////////////////////
 // KEYBOARD AND MOUSE INPUT

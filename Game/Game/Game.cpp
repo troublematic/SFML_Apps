@@ -5,6 +5,8 @@
 int SCREEN_WIDTH = 800;
 int SCREEN_HEIGHT = 600;
 
+sf::Texture ghostTexture;
+
 // GameInit is called once, when the program starts. Its job is to do things which only happen once, at the start.
 // E.g.
 //		Create the window that the game runs in
@@ -14,6 +16,12 @@ void GameInit()
 	// Create a window for the game
 	// The numbers are the width and height in pixels. The text is the title of the window.
 	window = new sf::RenderWindow(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "SFML works!");
+
+	// Load a texture
+	if (!ghostTexture.loadFromFile("Ghost.png"))
+	{
+		printf("Texture failed to load!\n");
+	}
 
 	// Write some text to the output window in Visual Studio
 	printf("Hello world!\n");
@@ -47,6 +55,9 @@ void GameLoop(float elapsedSeconds)
 	// Draw text
 	std::string text = "Oh my word!";
 	DrawString(text, 300, 50, 32, sf::Color::Green);
+
+	// Draw texture
+	DrawTexture(500, 100, ghostTexture);
 
 	// Draw a colored circle where the mouse is
 	float mouseX = (float)GetMouseX();
