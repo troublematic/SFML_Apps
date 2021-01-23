@@ -47,4 +47,19 @@ void GameLoop(float elapsedSeconds)
 	// Draw text
 	std::string text = "Oh my word!";
 	DrawString(text, 300, 50, 32, sf::Color::Green);
+
+	// Draw a colored circle where the mouse is
+	float mouseX = (float)GetMouseX();
+	float mouseY = (float)GetMouseY();
+	bool mousePressed = IsMouseButtonPressed();
+	if (mousePressed)
+	{
+		// Draw a red circle if the mouse button is pressed
+		DrawCircle(mouseX, mouseY, 20, sf::Color::Red);
+	}
+	else
+	{
+		// Otherwise, draw a yellow circle
+		DrawCircle(mouseX, mouseY, 10, sf::Color::Yellow);
+	}
 }

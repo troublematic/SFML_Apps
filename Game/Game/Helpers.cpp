@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <Windows.h>
 
+/////////////////////////////////////////////////////////////////////////////
+// DRAWING
+
 void DrawCircle(float centerX, float centerY, float radius, sf::Color color)
 {
     // Create a circle object
@@ -105,6 +108,32 @@ void DrawString(std::string myString, float x, float y, int height, sf::Color co
     window->draw(text);
 }
 
+
+/////////////////////////////////////////////////////////////////////////////
+// MOUSE INPUT
+
+bool IsMouseButtonPressed()
+{
+    return sf::Mouse::isButtonPressed(sf::Mouse::Left);
+}
+
+int GetMouseX()
+{
+    // Get mouse position, relative to the window
+    sf::Vector2i position = sf::Mouse::getPosition(*window);
+    return position.x;
+}
+
+int GetMouseY()
+{
+    // Get mouse position, relative to the window
+    sf::Vector2i position = sf::Mouse::getPosition(*window);
+    return position.y;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+// MISC
 
 // This function gets called when you call printf
 // It prints text to the output window in Visual Studio

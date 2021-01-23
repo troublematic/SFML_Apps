@@ -9,6 +9,9 @@ void DrawLine(float x1, float y1, float x2, float y2, sf::Color color);
 void DrawTriangle(float x1, float y1, float x2, float y2, float x3, float y3, sf::Color color);
 void DrawString(std::string text, float x, float y, int height, sf::Color color);
 
+bool IsMouseButtonPressed();
+int GetMouseX();
+int GetMouseY();
 
 // This replaces the standard 'printf' function with one which outputs
 // to the Visual Studio output window.
