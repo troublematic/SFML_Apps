@@ -9,6 +9,7 @@ void DrawLine(float x1, float y1, float x2, float y2, sf::Color color);
 void DrawTriangle(float x1, float y1, float x2, float y2, float x3, float y3, sf::Color color);
 void DrawString(std::string text, float x, float y, int height, sf::Color color);
 void DrawTexture(float x, float y, sf::Texture texture);
+void DrawTexture(float x, float y, float width, float height, sf::Texture texture);
 
 // Keyboard and mouse input
 bool IsKeyPressed(sf::Keyboard::Key key);

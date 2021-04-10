@@ -58,6 +58,8 @@ void GameLoop(float elapsedSeconds)
 
 	// Draw texture
 	DrawTexture(500, 100, ghostTexture);
+	DrawTexture(550, 100, 64, 32, ghostTexture);
+	DrawTexture(650, 100, 16, 80, ghostTexture);
 
 	// Draw a colored circle where the mouse is
 	float mouseX = (float)GetMouseX();

@@ -123,6 +123,26 @@ void DrawTexture(float x, float y, sf::Texture texture)
     window->draw(sprite);
 }
 
+void DrawTexture(float x, float y, float width, float height, sf::Texture texture)
+{
+    // Create a sprite object
+    sf::Sprite sprite;
+
+    // Set the position
+    sprite.setPosition(x, y);
+
+    // Set the texture
+    sprite.setTexture(texture);
+
+    // Set sprite scale, which is calculated from texture size and desired draw size
+    sf::Vector2u textureSize = texture.getSize();
+    float xScale = width / textureSize.x;
+    float yScale = height / textureSize.y;
+    sprite.setScale(xScale, yScale);
+
+    // Draw the sprite
+    window->draw(sprite);
+}
 
 /////////////////////////////////////////////////////////////////////////////
 // KEYBOARD AND MOUSE INPUT
