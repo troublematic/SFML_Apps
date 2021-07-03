@@ -6,6 +6,8 @@ int SCREEN_WIDTH = 800;
 int SCREEN_HEIGHT = 600;
 
 sf::Texture ghostTexture;
+//sf::SoundBuffer buffer;
+sf::Sound sound;
 
 // GameInit is called once, when the program starts. Its job is to do things which only happen once, at the start.
 // E.g.
@@ -18,10 +20,10 @@ void GameInit()
 	window = new sf::RenderWindow(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "SFML works!");
 
 	// Load a texture
-	if (!ghostTexture.loadFromFile("Ghost.png"))
-	{
-		printf("Texture failed to load!\n");
-	}
+	ghostTexture.loadFromFile("Ghost.png");
+
+	// Load a sound from the Sounds folder
+	sound = LoadSound("Shoot1.wav");
 
 	// Write some text to the output window in Visual Studio
 	printf("Hello world!\n");
@@ -53,7 +55,7 @@ void GameLoop(float elapsedSeconds)
 	DrawTriangle(triangleX, triangleY, triangleX, triangleY + 60, triangleX + 120, triangleY + 60, sf::Color::Yellow);
 
 	// Draw text
-	std::string text = "Oh my word!";
+	std::string text = "Click the mouse!";
 	DrawString(text, 300, 50, 32, sf::Color::Green);
 
 	// Draw texture
@@ -61,24 +63,38 @@ void GameLoop(float elapsedSeconds)
 	DrawTexture(550, 100, 64, 32, ghostTexture);
 	DrawTexture(650, 100, 16, 80, ghostTexture);
 
-	// Draw a colored circle where the mouse is
+	// Draw something where the mouse is
 	float mouseX = (float)GetMouseX();
 	float mouseY = (float)GetMouseY();
 	bool mousePressed = IsMouseButtonPressed();
 	if (mousePressed)
 	{
 		// Draw a red circle if the mouse button is pressed
-		DrawCircle(mouseX, mouseY, 20, sf::Color::Red);
+		DrawCircle(mouseX, mouseY, 40, sf::Color::Red);
+		sound.play();
 	}
 	else
 	{
-		// Otherwise, draw a yellow circle
-		DrawCircle(mouseX, mouseY, 10, sf::Color::Yellow);
+		// When the mouse is not pressed, draw a rotating sprite
+		// Note that X, Y are the center of the sprite, instead of the top left
+		float angle = totalTime * 30.0f;
+		DrawRotatedTexture(mouseX, mouseY, 64, 64, angle, ghostTexture);
 	}
 
 	// If the space bar is pressed, draw a rectangle
 	if (IsKeyPressed(sf::Keyboard::Space))
 	{
 		DrawRectangle(30, 460, 50, 10, sf::Color::Green);
+	}
+
+	// Music
+	DrawString("P = Play music, S = Stop music", 100, (float)(SCREEN_HEIGHT - 50), 32, sf::Color::Green);
+	if (IsKeyPressed(sf::Keyboard::P))
+	{
+		PlayMusic("Music.wav");
+	}
+	if (IsKeyPressed(sf::Keyboard::S))
+	{
+		StopMusic();
 	}
 }
